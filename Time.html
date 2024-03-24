@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Exam Timer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <body>
+        <div id="columns">
+            <div class="column">
+                Biology Paper 1
+                <div id="biology-paper1"></div>
+            </div>
+            <div class="column">
+                English Lit Paper 1
+                <div id="eng-lit-paper1"></div>
+            </div>
+            <div class="column">
+                Chinese Reading + Listening
+                <div id="chinese-rl"></div>
+            </div>
+            <div class="column">
+                Business Paper 1
+                <div id="business-paper1"></div>
+            </div>
+            <div class="column">
+                CS Paper 1
+                <div id="cs-paper1"></div>
+            </div>
+            <div class="column">
+                Maths Paper 1
+                <div id="maths-paper1"></div>
+            </div>
+            <div class="column">
+                Chemistry Paper 1
+                <div id="chem-paper1"></div>
+            </div>
+            <div class="column">
+                Geography Paper 1
+                <div id="geog-paper1"></div>
+            </div>
+            <div class="column">
+                English Lit Paper 2
+                <div id="eng-lit-paper2"></div>
+            </div>
+            <div class="column">
+                Cs Paper 2
+                <div id="cs-paper2"></div>
+            </div>
+            <div class="column">
+                Physics Paper 1
+                <div id="phy-paper1"></div>
+            </div>
+            <div class="column">
+                Chinere Writing
+                <div id="chinese-writing"></div>
+            </div>
+            <div class="column">
+                English Language Paper 1
+                <div id="eng-lang-paper1"></div>
+            </div>
+            <div class="column">
+                Maths Paper 2
+                <div id="maths-paper2"></div>
+            </div>
+            <div class="column">
+                Geography Paper 2
+                <div id="geog-paper2"></div>
+            </div>
+            <div class="column">
+                Business Paper 2
+                <div id="business-paper2"></div>
+            </div>
+            <div class="column">
+                English Language Paper 2
+                <div id="eng-lang-paper2"></div>
+            </div>
+            <div class="column">
+                Biology Paper 2
+                <div id="biology-paper2"></div>
+            </div>
+            <div class="column">
+                Maths Paper 3
+                <div id="maths-paper3"></div>
+            </div>
+            <div class="column">
+                Chemistry Paper 2
+                <div id="chem-paper2"></div>
+            </div>
+            <div class="column">
+                Geography Paper 3
+                <div id="geog-paper3"></div>
+            </div>
+            <div class="column">
+                Physics Paper 2
+                <div id="phy-paper2"></div>
+            </div>
+            <div class="column">
+                Music Listening
+                <div id="music-listening"></div>
+            </div>
+        </div>
+    </body>
+
+<style>
+
+    #columns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 1.3em;
+        font-size: 1.2em;
+    }
+
+    .column {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        padding: 23px;
+    }
+
+</style>
+
+<script>
+
+    GetTime("May 10, 2024 9:00:00", 'biology-paper1');
+    GetTime('May 13, 2024 9:00:00', "eng-lit-paper1");
+    GetTime("May 14, 2024 9:00:00", "chinese-rl");
+    GetTime("May 14, 2024 13:00:00", "business-paper1");
+    GetTime("May 15, 2024 13:30:00", "cs-paper1");
+    GetTime("May 16, 2024 9:00:00", "maths-paper1");
+    GetTime("May 17, 2024 9:00:00", "chem-paper1");
+    GetTime("May 17, 2024 13:30:00", "geog-paper1");
+    GetTime("May 20, 2024 9:00:00", "eng-lit-paper2");
+    GetTime("May 21, 2024 13:30:00", "cs-paper2");
+    GetTime("May 22, 2024 9:00:00", "phy-paper1");
+    GetTime("May 22, 2024 13:30:00", "chinese-writing");
+    GetTime("May 23, 2024 9:00:00", "eng-lang-paper1");
+    GetTime("Jun 3, 2024 9:00:00", "maths-paper2");
+    GetTime("Jun 5, 2024 9:00:00", "geog-paper2");
+    GetTime("Jun 5, 2024 13:30:00", "business-paper2");
+    GetTime("Jun 6, 2024 9:00:00", "eng-lang-paper2");
+    GetTime("Jun 7, 2024 13:30:00", "biology-paper2");
+    GetTime("Jun 10, 2024 9:00:00", "maths-paper3");
+    GetTime("Jun 11, 2024 9:00:00", "chem-paper2");
+    GetTime("Jun 14, 2024 9:00:00", "geog-paper3");
+    GetTime("Jun 14, 2024 13:30:00", "phy-paper2");
+    GetTime("Jun 17, 2024 13:30:00", "music-listening");
+
+    function GetTime(day, id) {
+
+        let countDownDate = new Date(day).getTime();
+
+        let x = setInterval(function() {
+
+        let now = new Date().getTime();
+        
+        let distance = countDownDate - now;
+        
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById(id).innerHTML = days + "d " + hours + "h "
+        + minutes + "m ";
+            
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById(id).innerHTML = "EXPIRED";
+        }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
